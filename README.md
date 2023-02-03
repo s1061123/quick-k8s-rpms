@@ -44,52 +44,77 @@ $
 - kube-scheduler
 - pause
 
-6. In `SOURCES` directory, execute `./default-image-push.sh` to push required container image (pause/coredns and so on). 
+6. Configure `common.sh` parameters to fit your environment (container registory URL, kubernetes build version, cri-o path)
+
 ```
-$ cd SOURCES
+$ vi common.sh
+<edit the file>
+```
+
+7. Execute `./default-image-push.sh` to push required container image (pause/coredns and so on).
+```
 $ ./default-image-push.sh
 ```
 
-### RPM based install components (kubelet/kubectl/kubeadm)
+## Build Kubernetes
 
-#### Build Kubernetes binaries (kubelet/kubectl/kubeadm)
+Kubernetes artifacts are two types: RPM based package and container image.
 
-In `SOURCES` directory, execute `./builds.sh` to build kubelet/kubectl/kubeadm. These binaries are copied to `SOURCES` to build RPMs.
+RPM:
+
+- kubelet
+- kubectl
+- kubeadm
+
+Container Image:
+
+- kube-apiserver
+- kube-controller-manager
+- kube-proxy
+- kube-scheduler
+
+### RPM based install components
+
+#### Build Kubernetes binaries
+
+Execute `./builds.sh` to build kubelet/kubectl/kubeadm. These binaries are copied to `SOURCES` to build RPMs.
 
 ```
-$ cd SOURCES
 $ ./builds.sh
 ```
 
 #### Build RPMS
 
-In `SOURCES` directory, execute `./rpmbuild.sh` to build RPMs. Artifacts goes into `RPMS/<arch (e.g. x86_64)>` directory.
+Execute `./rpmbuild.sh` to build RPMs. Artifacts goes into `RPMS/<arch (e.g. x86_64)>` directory.
 
 ```
-$ cd SOURCES
 $ ./rpmbuilds.sh
 ```
-### Container based install components (kube-apiserver/kube-controller-manager/kube-proxy/kube-scheduler)
+
+### Container based install components
 
 #### Build images
 
-In `SOURCES` directory, execute `./image-build.sh` to build container images. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
+Execute `./image-build.sh` to build container images. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
 
 ```
-$ cd SOURCES
 $ ./image-build.sh
 ```
 
 #### Push images
 
-In `SOURCES` directory, execute `./image-push.sh` to push images to container registry. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
+Execute `./image-push.sh` to push images to container registry. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
 
 ```
-$ cd SOURCES
 $ ./image-push.sh
 ```
 
+## Build cri-o 
+
+```
+
+```
 
 #### Note
-
-- RPM spec files from [kubepkg](https://github.com/kubernetes/release/tree/master/cmd/kubepkg)
+ 
+- RPM spec files from [kubepkg](https://github.com/kubernetes/release/tree/master/cmd/kubepkg) and [fedora/cri-o](https://src.fedoraproject.org/rpms/cri-o/blob/rawhide/f/cri-o.spec)
