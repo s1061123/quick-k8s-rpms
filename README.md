@@ -34,7 +34,19 @@ $ cat ~/.rpmmacros
 $
 ```
 
-### Build Kubernetes
+5. Create following repositories in container registry
+
+- coredns
+- etcd
+- kube-api-server
+- kube-controller-manager
+- kube-proxy
+- kube-scheduler
+- pause
+
+### RPM based install components (kubelet/kubectl/kubeadm)
+
+#### Build Kubernetes binaries (kubelet/kubectl/kubeadm)
 
 In `SOURCES` directory, execute `./builds.sh` to build kubelet/kubectl/kubeadm. These binaries are copied to `SOURCES` to build RPMs.
 
@@ -43,13 +55,32 @@ $ cd SOURCES
 $ ./builds.sh
 ```
 
-### Build RPMS
+#### Build RPMS
 
 In `SOURCES` directory, execute `./rpmbuild.sh` to build RPMs. Artifacts goes into `RPMS/<arch (e.g. x86_64)>` directory.
 
 ```
 $ cd SOURCES
-$ ./builds.sh
+$ ./rpmbuilds.sh
+```
+### Container based install components (kube-apiserver/kube-controller-manager/kube-proxy/kube-scheduler)
+
+#### Build images
+
+In `SOURCES` directory, execute `./image-build.sh` to build container images. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
+
+```
+$ cd SOURCES
+$ ./image-build.sh
+```
+
+#### Push images
+
+In `SOURCES` directory, execute `./image-push.sh` to push images to container registry. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
+
+```
+$ cd SOURCES
+$ ./image-push.sh
 ```
 
 
