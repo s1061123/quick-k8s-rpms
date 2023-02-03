@@ -44,6 +44,12 @@ $
 - kube-scheduler
 - pause
 
+6. In `SOURCES` directory, execute `./default-image-push.sh` to push required container image (pause/coredns and so on). 
+```
+$ cd SOURCES
+$ ./default-image-push.sh
+```
+
 ### RPM based install components (kubelet/kubectl/kubeadm)
 
 #### Build Kubernetes binaries (kubelet/kubectl/kubeadm)
