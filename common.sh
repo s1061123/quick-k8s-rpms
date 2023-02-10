@@ -6,7 +6,7 @@
 REPO="quay.io/XXXX" 
 
 # Kubernetes versions, used for k8s container image
-VER="v1.28.0-alpha" 
+VER="v1.27.0-alpha"
 
 # cri-o path
-CRIO_PATH=~/src/cri-o
+CRIO_PATH=/usr/src/SOURCES/cri-o
