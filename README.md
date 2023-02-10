@@ -80,7 +80,7 @@ Container Image:
 Execute `./builds.sh` to build kubelet/kubectl/kubeadm. These binaries are copied to `SOURCES` to build RPMs.
 
 ```
-$ ./builds.sh
+$ ./k8s-cmd-build.sh
 ```
 
 #### Build RPMS
@@ -88,7 +88,7 @@ $ ./builds.sh
 Execute `./rpmbuild.sh` to build RPMs. Artifacts goes into `RPMS/<arch (e.g. x86_64)>` directory.
 
 ```
-$ ./rpmbuilds.sh
+$ ./k8s-rpmbuild.sh
 ```
 
 ### Container based install components
@@ -98,7 +98,7 @@ $ ./rpmbuilds.sh
 Execute `./image-build.sh` to build container images. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
 
 ```
-$ ./image-build.sh
+$ ./k8s-image-build.sh
 ```
 
 #### Push images
@@ -106,13 +106,31 @@ $ ./image-build.sh
 Execute `./image-push.sh` to push images to container registry. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
 
 ```
-$ ./image-push.sh
+$ ./k8s-image-push.sh
 ```
 
 ## Build cri-o 
 
+Get cri-o source from github
+
+```
+$ cd SOURCES
+$ git clone https://github.com/cri-o/cri-o
 ```
 
+Do build (in host OS)
+
+```
+$ ./crio-build-rpm.sh
+```
+
+Do build (in container host, if running OS and target OS is different)
+
+```
+$ pushd images
+$ docker build -f Dockerfile.crio -t criobuild:latest .
+$ popd
+$ ./crio-build-rpm-docker.sh
 ```
 
 #### Note
