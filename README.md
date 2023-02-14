@@ -77,7 +77,7 @@ Container Image:
 
 #### Build Kubernetes binaries
 
-Execute `./builds.sh` to build kubelet/kubectl/kubeadm. These binaries are copied to `SOURCES` to build RPMs.
+Execute `./k8s-cmd-builds.sh` to build kubelet/kubectl/kubeadm. These binaries are copied to `SOURCES` to build RPMs.
 
 ```
 $ ./k8s-cmd-build.sh
@@ -85,17 +85,17 @@ $ ./k8s-cmd-build.sh
 
 #### Build RPMS
 
-Execute `./rpmbuild.sh` to build RPMs. Artifacts goes into `RPMS/<arch (e.g. x86_64)>` directory.
+Execute `./k8s-cmd-rpmbuild.sh` to build RPMs. Artifacts goes into `RPMS/<arch (e.g. x86_64)>` directory.
 
 ```
-$ ./k8s-rpmbuild.sh
+$ ./k8s-cmd-rpmbuild.sh
 ```
 
 ### Container based install components
 
 #### Build images
 
-Execute `./image-build.sh` to build container images. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
+Execute `./k8s-image-build.sh` to build container images. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
 
 ```
 $ ./k8s-image-build.sh
@@ -103,7 +103,7 @@ $ ./k8s-image-build.sh
 
 #### Push images
 
-Execute `./image-push.sh` to push images to container registry. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
+Execute `./k8s-image-push.sh` to push images to container registry. These container images are built at SOURCES/kubernetes/_output/release-images/amd64/.
 
 ```
 $ ./k8s-image-push.sh

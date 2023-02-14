@@ -3,10 +3,13 @@
 #### config params (need to modify!)
 
 # fill your container repository info
-REPO="quay.io/XXXX" 
+REPO="quay.io/foobar"
 
 # Kubernetes versions, used for k8s container image
 VER="v1.27.0-alpha"
 
 # cri-o path
-CRIO_PATH=/usr/src/SOURCES/cri-o
+CRIO_PATH=/home/foobar/src/cri-o
+
+# Kubernetes path
+K8S_PATH=/home/foobar/src/kubernetes
