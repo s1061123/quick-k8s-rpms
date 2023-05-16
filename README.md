@@ -51,9 +51,9 @@ $ vi common.sh
 <edit the file>
 ```
 
-7. Execute `./default-image-push.sh` to push required container image (pause/coredns and so on).
+7. Execute `./k8s-default-image-push.sh` to push required container image (pause/coredns and so on).
 ```
-$ ./default-image-push.sh
+$ ./k8s-default-image-push.sh
 ```
 
 ## Build Kubernetes
